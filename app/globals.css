@@ -2,10 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
 :root {
   --foreground-rgb: 0, 0, 0;
   --background-start-rgb: 214, 219, 220;
   --background-end-rgb: 255, 255, 255;
+}
+
+html {
+  overflow-y: scroll; /* Luôn hiển thị thanh cuộn dọc */
 }
 
 @media (prefers-color-scheme: dark) {
@@ -16,18 +22,46 @@
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
-
 @layer utilities {
   .text-balance {
     text-wrap: balance;
   }
 }
+
+.half-circle {
+  border-radius: 50%;
+  top: -50%;
+  left: 0;
+  clip-path: ellipse(70% 70% at 50% 5%);
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px)  {
+  .half-circle{
+    clip-path: ellipse(70% 40% at 90% 90%);
+    height:250px;
+    width: 600px;
+  }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 0px; /* Độ rộng của thanh cuộn */
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Màu nền của đường ray cuộn */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: transparent; /* Màu của thanh cuộn */
+  border-radius: 6px; /* Bo tròn góc của thanh cuộn */
+  border: 1px solid transparent; /* Bo tròn của đường viền thanh cuộn để tạo hiệu ứng trong suốt */
+  background-clip: padding-box; /* Điều chỉnh việc hiển thị của thanh cuộn trong vùng padding */
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: transparent; /* Màu của thanh cuộn khi hover */
+}
+
+
+
+
